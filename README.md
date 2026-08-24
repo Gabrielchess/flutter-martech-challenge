@@ -20,7 +20,6 @@ Filtros aplicados: Apenas Dormentes (164), Self Excluded (14), KYC Status Non Ve
 
 ## Arquitetura
 
-| Lambda | Lê → escreve | Faz |
 | Recurso | Configuração |
 |---|---|
 | **S3** | Bucket único |
