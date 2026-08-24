@@ -6,9 +6,9 @@ Pipeline que responde: **quais jogadores dormentes vale a pena reativar, com qua
 
 | Conceito | Definição | Por quê |
 |---|---|---|
-| **Atividade** | depósito confirmado **ou** aposta | apostar sem depositar é jogar com saldo: o jogador segue engajado |
-| **Dormente** | > 30 dias sem atividade | é onde a taxa de retorno observada cai abaixo de 50% (65,5% até 30 dias → 48,9% de 31 a 45) |
-| **Nunca ativou** | sem depósito e sem aposta | é problema de onboarding; misturar com dormência inflaria o alvo |
+| **Atividade** | depósito confirmado **ou** aposta | Jogador segue engajado |
+| **Dormente** | > 30 dias sem atividade | Taxa de retorno cai abaixo de 50% |
+| **Nunca ativou** | sem depósito e sem aposta | Problema de onboarding |
 
 ## A resposta
 
