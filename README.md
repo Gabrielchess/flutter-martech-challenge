@@ -13,15 +13,7 @@ Pipeline que responde: **quais jogadores dormentes vale a pena reativar, com qua
 ## A resposta
 
 Dos 250 jogadores, **119 são alvo acionável**: dormentes, com valor, liberados pelo compliance.
-
-### Filtros aplicados:
-− Dormentes: 164
-
-− Self Excluded: 14
-
-− KYC Status Non Verified: 53
-
-− Nunca depositaram ou Apostaram: 7
+Filtros aplicados: Apenas Dormentes (164), Self Excluded (14), KYC Status Non Verified (53), Nunca depositaram ou Apostaram (7)
 
 **Alvos dormentes acionáveis: 119**
 
