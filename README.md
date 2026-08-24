@@ -16,8 +16,11 @@ Dos 250 jogadores, **119 são alvo acionável**: dormentes, com valor, liberados
 
 ### Filtros aplicados:
 − Dormentes: 164
+
 − Self Excluded: 14
+
 − KYC Status Non Verified: 53
+
 − Nunca depositaram ou Apostaram: 7
 
 **Alvos dormentes acionáveis: 119**
