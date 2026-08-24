@@ -8,16 +8,16 @@ Duas coisas impediam a resposta: **Os valores estão em três moedas** e **A tax
 
 ## A resposta
 
-Dos 250 jogadores, **123 são alvo acionável**: dormentes, com valor, liberados pelo compliance.
+Dos 250 jogadores, **119 são alvo acionável**: dormentes, com valor, liberados pelo compliance.
 
 | | jogadores |
 |---|---|
 | base | 250 |
-| − nunca ativaram | −7 |
-| − ativos (≤30 dias) | −77 |
-| − dormentes sem depósito confirmado | −28 |
-| − bloqueados por compliance | −15 |
-| **alvo acionável** | **123** |
+| − Dormentes | 164 |
+| − Self Excluded | 14 |
+| − KYC Status Non Verified | 53 |
+| − Nunca depositaram ou Apostaram | 7 |
+| **alvos dormentes acionáveis** | **119** |
 
 > **[A PREENCHER]** — segmento recomendado, oferta, valor esperado.
 
