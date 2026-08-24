@@ -2,11 +2,9 @@
 
 Pipeline que responde: **quais jogadores dormentes vale a pena reativar, com qual oferta, e quanto eles valem.**
 
-Data de referência: **2024-04-01**.
-
 ## O problema
 
-Duas coisas impediam a resposta. **Os valores estão em três moedas** — somar R$100, US$100 e €100 dá um número sem significado, e sem medida única não existe ranking de valor. **A taxonomia de campanha está quebrada** — apenas 4 dos 12 nomes seguem o padrão oficial, o que deixava 827 dos 1.258 toques ligados a uma campanha cuja oferta não dava para afirmar com confiança.
+Duas coisas impediam a resposta: **Os valores estão em três moedas** e **A taxonomia de campanha está quebrada**.
 
 ## A resposta
 
@@ -52,18 +50,15 @@ Layout esperado em bronze: `bronze/{entidade}/ingest_date=YYYY-MM-DD/{entidade}.
 
 Step Functions em sequência, EventBridge Scheduler mensal, métricas via EMF no CloudWatch.
 
-**O câmbio é uma Lambda separada** porque API é problema de ingestão, não de transformação: se a Lambda que converte chamasse a rede, uma instabilidade derrubaria a carga e reprocessar março em junho poderia dar outro número.
-
-**A tabela de câmbio é densa** (uma linha por dia corrido, com carry-forward explícito) porque o BCE não publica em fim de semana e ~31% das transações em moeda estrangeira caem nesses dias. Join direto com a resposta da API perderia essas linhas em silêncio.
+**O câmbio é uma Lambda separada** porque API é problema de ingestão, não de transformação. **A tabela de câmbio é densa**, contendo uma linha por dia corrido, com carry-forward explícito, porque o BCE não publica em fim de semana.
 
 ## Modelo de dados
 
 ![Modelo gold](docs/img/modelo_gold.png)
 
-Star schema Kimball: `dim_date`, `dim_player`, `dim_campaign` + `fact_deposit`, `fact_bet`, `fact_touchpoint`. Três fatos porque são três processos com grãos diferentes — fato não se junta a fato, o encontro é nas dimensões conformadas. `dim_date` é gerada e não derivada dos fatos, senão faltariam justamente os dias sem movimento. Modelos da origem em [`docs/img/`](docs/img/).
+Star schema Kimball: `dim_date`, `dim_player`, `dim_campaign` + `fact_deposit`, `fact_bet`, `fact_touchpoint`. Três fatos porque são três processos com grãos diferentes, `dim_date` é gerada e não derivada dos fatos, senão faltariam justamente os dias sem movimento.
 
-O agregado por jogador **não é materializado**: vive em `vw_player_360`. Com 250 jogadores, materializar seria uma tabela a manter em troca de milissegundos de scan, e duplicaria a régua de dormência em dois lugares. O custo assumido é não ter histórico de snapshot — quando a campanha virar mensal e a lista precisar ser auditável, vira `fact_player_snapshot`.
-
+O agregado por jogador vive em `vw_player_360`. Com 250 jogadores,
 | View | Responde |
 |---|---|
 | `vw_player_360` | um jogador por linha: LTV, dormência, faixa de valor |
@@ -119,15 +114,6 @@ Nada sai em silêncio: toda linha removida vai para `quarantine/` com o motivo, 
 
 ## O que ficou de fora
 
-**Ingestão de bronze** — os CSVs são carregados manualmente. **Histórico de snapshot** — a view recalcula a cada consulta. **Testes unitários** — o parser de taxonomia e o carry-forward de câmbio são onde pagariam primeiro. **SCD Tipo 2** — `kyc_status` muda com o tempo e o modelo só guarda o estado atual. **Segmento de onboarding** — os 7 que nunca ativaram e os 28 sem depósito confirmado são público distinto, com oferta distinta.
-
-## Estrutura
-
-```
-data/raw/     os 5 CSVs de origem
-src/          shared/ (DQ, câmbio, taxonomia, I/O) + fx/ silver/ gold/
-sql/          DDL, views e o runner do Athena
-terraform/    infraestrutura
-docs/         recomendação, dicionário de dados, diagramas
-output/       resultado das views que sustenta a recomendação
-```
+**Ingestão de bronze** — os CSVs são carregados manualmente. 
+**Histórico de snapshot** — a view recalcula a cada consulta. 
+**Segmento de onboarding** — os 7 que nunca ativaram e os 28 sem depósito confirmado são público distinto, com oferta distinta.
