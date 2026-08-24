@@ -1,4 +1,4 @@
-# Case Técnico — Martech Specialist | Flutter Brazil
+# Case Técnico: Martech Specialist | Flutter Brazil
 
 Pipeline que responde: **quais jogadores dormentes vale a pena reativar, com qual oferta, e quanto eles valem.**
 
