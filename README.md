@@ -14,6 +14,8 @@ Pipeline que responde: **quais jogadores dormentes vale a pena reativar, com qua
 
 Dos 250 jogadores, **119 são alvo acionável**: dormentes, com valor, liberados pelo compliance.
 
+## Filtros aplicados
+
 | Segmentos | jogadores |
 |---|---|
 | − Dormentes | 164 |
