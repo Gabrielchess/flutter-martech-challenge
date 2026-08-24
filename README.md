@@ -40,6 +40,7 @@ Dos 250 jogadores, **119 são alvo acionável**: dormentes, com valor, liberados
 
 **O câmbio é uma Lambda separada** porque API é problema de ingestão, não de transformação. **A tabela de câmbio é densa**, contendo uma linha por dia corrido, com carry-forward explícito, porque o BCE não publica em fim de semana.
 
+| Lambda | Lê → escreve | Faz |
 |---|---|---|
 | `flutter-fx` | Frankfurter → `reference/` | ingere cotações do BCE, materializa tabela diária densa |
 | `flutter-silver` | `bronze/` → `silver/` | valida, deduplica, quarentena, tipa, converte para BRL, parseia taxonomia |
