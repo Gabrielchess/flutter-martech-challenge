@@ -48,8 +48,6 @@ Dos 250 jogadores, **119 são alvo acionável**: dormentes, com valor, liberados
 
 ## Modelo de dados
 
-![Modelo gold](docs/img/modelo_gold.png)
-
 Star schema Kimball: `dim_date`, `dim_player`, `dim_campaign` + `fact_deposit`, `fact_bet`, `fact_touchpoint`. Três fatos porque são três processos com grãos diferentes, `dim_date` é gerada e não derivada dos fatos, senão faltariam justamente os dias sem movimento.
 
 | Tabela | Tipo | Grão | Medidas |
