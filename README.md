@@ -26,6 +26,7 @@ Dos 250 jogadores, **119 são alvo acionável**: dormentes, com valor, liberados
 
 ## Arquitetura
 
+| Lambda | Lê → escreve | Faz |
 | Recurso | Configuração |
 |---|---|
 | **S3** | Bucket único |
