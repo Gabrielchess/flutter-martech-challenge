@@ -23,8 +23,6 @@ Dos 250 jogadores, **123 são alvo acionável**: dormentes, com valor, liberados
 
 > **[A PREENCHER]** — segmento recomendado, oferta, valor esperado.
 
-Recomendação completa em [`docs/recomendacao.md`](docs/recomendacao.md).
-
 ## Como rodar
 
 ```bash
