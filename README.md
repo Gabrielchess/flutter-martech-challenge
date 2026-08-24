@@ -95,6 +95,3 @@ terraform output -raw comando_disparar_pipeline | bash
 
 cd .. && python sql/run_athena.py sql/athena_gold.sql sql/athena_silver.sql
 ```
-
-Layout esperado em bronze: `bronze/{entidade}/ingest_date=YYYY-MM-DD/{entidade}.csv`.
-
